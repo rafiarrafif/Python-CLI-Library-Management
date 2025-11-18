@@ -38,17 +38,23 @@ def add_book():
         judul = input("Masukan judul buku: ").strip()
         if judul == "":
             print("Judul buku tidak boleh kosong")
-        break
+        else:
+            break
     while True:
         penulis = input("Masukan penulis buku: ").strip()
         if penulis == "":
             print("Penulis buku tidak boleh kosong")
-        break    
+        else:
+            break    
     while True:
         isbn = input("Masukan ISBN buku: ").strip()
+        checking_isbn = find_book_from_isbn(isbn)
         if isbn == "":
             print("ISBN buku tidak boleh kosong")
-        break
+        elif checking_isbn:
+            print(f"ISBN {checking_isbn.isbn} sudah tercantum pada buku {checking_isbn.judul}. Gunakan yang lain!")
+        else:
+            break
     while True:
         stock_raw = input("Masukan stock (kosongkan jika tidak ada): ")
         if not stock_raw.isdigit():
