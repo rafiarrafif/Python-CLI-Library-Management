@@ -18,6 +18,16 @@ list_buku=[
 ]
 ##### (END) Initation book list and seed dummy data #####
 
+##### Find book with ISBN function #####
+def find_book_from_isbn(isbn_target):
+    book_found = False;
+    for book in list_buku:
+        if book.isbn == isbn_target:
+            book_found = book
+    return book_found
+##### (END) Find book with ISBN function #####
+
+
 ##### Add book function #####
 def add_book():
     judul = ""
@@ -52,14 +62,14 @@ def add_book():
 
 ##### Borrow book function #####
 def borrow_book(isbn_target):
-    book_found = False
-    for book in list_buku:
-        if book.isbn == isbn_target:
-            book_found = book.judul
-            if book.stock == 0:
-                return f"Stok buku {book_found} telah habis." 
-            book.stock -= 1
-    return f"Buku {book_found} berhasil dipinjam." if book_found else f"Buku dengan ISBN {isbn_target} tidak ditemukan."
+    book = find_book_from_isbn(isbn_target)
+    if book:
+        if book.stock == 0:
+            return f"Stok buku {book.judul} telah habis." 
+        book.stock -= 1
+        return f"Buku {book.judul} berhasil dipinjam."
+    else:
+        return f"Buku dengan isbn {isbn_target} tidak ditemukan."
 ##### (END) Borrow book function #####
 
 ##### Program Header #####
