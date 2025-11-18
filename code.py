@@ -47,8 +47,11 @@ while True:
             if judul == "" or penulis == "" or isbn == "" :
                 print(f"Input yang kamu masukan tidak valid")
                 break
+            elif not stock.isdigit():
+                print(f"Stock harus berupa angka")
+                break
             else:
-                list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=stock))
+                list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=int(stock) if stock else 0))
                 print(f"Buku {judul} telah berhasil ditambahkan")
                 break
     ##### (END) Add new book #####
@@ -66,7 +69,8 @@ while True:
 
     ##### Borrow book #####
     if select_menu == "c":
-        print("pinjem buku")
+        isbn_target = input("Masukan ISBN buku yang ingin dipinjam: ").strip()
+
     ##### (END) Borrow book #####
 
     if select_menu == "d":
