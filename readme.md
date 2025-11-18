@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/) [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![Made with Love](https://img.shields.io/badge/made%20with-%E2%9D%A4-red.svg)](https://github.com/username/library-system-cli)
 
-> _"A library so simple, even my cat could use it... if she could read."_ 🐱
+> _"A library is not a luxury but one of the necessities of life."_ - Henry Ward Beecher
 
 A minimalist command-line library management system built with Python. Yes, it's simple. No, it won't make you coffee. But hey, it manages books! 📖
 
@@ -140,7 +140,7 @@ Found a bug? Have an idea? Want to add a feature that makes coffee?
 Feel free to:
 
 - Open an issue (be nice, I'm learning too!)
-- Submit a pull request (with a smile 😊)
+- Submit a pull request
 - Share your thoughts (constructive criticism welcomed!)
 
 ### How to Contribute
