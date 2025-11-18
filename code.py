@@ -7,6 +7,43 @@ class Book:
         self.isbn = isbn
         self.stock = stock
 
+##### Initation book list and seed dummy data #####
+list_buku=[
+    Book(judul="Laskar Pelangi", penulis="Andrea Hirata", isbn="9786020336201", stock=5),
+    Book(judul="Bumi Manusia", penulis="Pramoedya Ananta Toer", isbn="9786020336010", stock=3),
+    Book(judul="Negeri 5 Menara", penulis="Ahmad Fuadi", isbn="9786020336225", stock=4),
+    Book(judul="Ayat-Ayat Cinta", penulis="Habiburrahman El Shirazy", isbn="9786020336232", stock=2)
+]
+##### (END) Initation book list and seed dummy data #####
+
+def add_book():
+    judul = ""
+    penulis = ""
+    isbn = ""
+    stock = 0
+    while True:
+        judul = input("Masukan judul buku: ").strip()
+        if judul != "":
+            print("Judul buku tidak boleh kosong")
+        break
+    while True:
+        penulis = input("Masukan penulis buku: ").strip()
+        if penulis != "":
+            print("Penulis buku tidak boleh kosong")
+        break    
+    while True:
+        isbn = input("Masukan ISBN buku: ").strip()
+        if isbn != "":
+            print("ISBN buku tidak boleh kosong")
+        break
+    while True:
+        stock = input("Masukan stock (kosongkan jika tidak ada): ")
+        if stock == "" or not stock.isdigit():
+            stock = int(stock) if stock else 0
+            break
+    print(f"Buku {judul} berhasil ditambahkan.")
+    list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=stock))
+
 def borrow_book(isbn_target):
     book_found = False
     for book in list_buku:
@@ -25,17 +62,6 @@ print("|     Helmi Arrafif Kanahaya (L0225034)    |")
 print("|                                          |")
 print("+------------------------------------------+")
 
-##### Initation book list #####
-'''
-
-'''
-list_buku=[
-    Book(judul="Laskar Pelangi", penulis="Andrea Hirata", isbn="9786020336201", stock=5),
-    Book(judul="Bumi Manusia", penulis="Pramoedya Ananta Toer", isbn="9786020336010", stock=3),
-    Book(judul="Negeri 5 Menara", penulis="Ahmad Fuadi", isbn="9786020336225", stock=4),
-    Book(judul="Ayat-Ayat Cinta", penulis="Habiburrahman El Shirazy", isbn="9786020336232", stock=2)
-]
-##### (END) Initation book list #####
 
 ##### Main Program Loop #####
 while True:
@@ -44,24 +70,8 @@ while True:
 
     ##### Add new book #####
     if select_menu == "a":
-        while True:
-            judul = input("Masukan judul buku: ").strip()
-            penulis = input("Masukan penulis buku: ").strip()
-            isbn = input("Masukan ISBN buku: ").strip()
-            stock = input("Masukan stock (kosongkan jika tidak ada): ")
-            if judul == "" or penulis == "" or isbn == "" :
-                print("Input yang kamu masukan tidak valid")
-                input("Tekan Enter untuk melanjutkan...")
-                break
-            elif not stock.isdigit():
-                print("Stock harus berupa angka")
-                input("Tekan Enter untuk melanjutkan...")
-                break
-            else:
-                list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=int(stock) if stock else 0))
-                print(f"Buku {judul} telah berhasil ditambahkan")
-                input("Tekan Enter untuk melanjutkan...")
-                break
+        add_book()
+        input("Tekan Enter untuk kembali ke menu...")
     ##### (END) Add new book #####
 
     ##### View book list #####
