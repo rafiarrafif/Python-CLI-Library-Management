@@ -1,5 +1,4 @@
 import tabulate as tb
-import json
 
 class Book:
     def __init__(self, judul, penulis, isbn, stock = 0):
@@ -7,11 +6,16 @@ class Book:
         self.penulis = penulis
         self.isbn = isbn
         self.stock = stock
-    def view(self):
-        print(f"Judul : {self.judul}")
-        print(f"Penulis : {self.penulis}")
-        print(f"ISBN : {self.isbn}")
-        print(f"Stock Tersedia : {self.stock}")
+
+def borrow_book(isbn_target):
+    book_found = False
+    for book in list_buku:
+        if book.isbn == isbn_target:
+            book_found = book.judul
+            if book.stock == 0:
+                return f"Stok buku {book_found} telah habis." 
+            book.stock -= 1
+    return f"Buku {book_found} berhasil dipinjam." if book_found else f"Buku dengan ISBN {isbn_target} tidak ditemukan."
 
 print("+------------------------------------------+")
 print("|                                          |")
@@ -35,7 +39,8 @@ list_buku=[
 
 ##### Main Program Loop #####
 while True:
-    select_menu = input("Pilih Menu\na) Tambah Buku\nb) Tampilkan Buku\nc) Pinjam Buku\nd) keluar\n\nPilih: ").strip().lower()
+    print("\n"*12)
+    select_menu = input("=== Menu Utama ===\na) Tambah Buku\nb) Tampilkan Buku\nc) Pinjam Buku\nd) keluar\n\nPilih: ").strip().lower()
 
     ##### Add new book #####
     if select_menu == "a":
@@ -45,14 +50,17 @@ while True:
             isbn = input("Masukan ISBN buku: ").strip()
             stock = input("Masukan stock (kosongkan jika tidak ada): ")
             if judul == "" or penulis == "" or isbn == "" :
-                print(f"Input yang kamu masukan tidak valid")
+                print("Input yang kamu masukan tidak valid")
+                input("Tekan Enter untuk melanjutkan...")
                 break
             elif not stock.isdigit():
-                print(f"Stock harus berupa angka")
+                print("Stock harus berupa angka")
+                input("Tekan Enter untuk melanjutkan...")
                 break
             else:
                 list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=int(stock) if stock else 0))
                 print(f"Buku {judul} telah berhasil ditambahkan")
+                input("Tekan Enter untuk melanjutkan...")
                 break
     ##### (END) Add new book #####
 
@@ -70,7 +78,8 @@ while True:
     ##### Borrow book #####
     if select_menu == "c":
         isbn_target = input("Masukan ISBN buku yang ingin dipinjam: ").strip()
-
+        print(borrow_book(isbn_target))
+        input("Tekan Enter untuk kembali ke menu...")
     ##### (END) Borrow book #####
 
     if select_menu == "d":
