@@ -73,9 +73,11 @@ print("+------------------------------------------+")
 ##### (END) Program Header #####
 
 ##### Main Program Loop #####
+first_run = True
 while True:
-    print("\n"*12)
+    print("\n"*99 if first_run == False else "") 
     select_menu = input("=== Menu Utama ===\na) Tambah Buku\nb) Tampilkan Buku\nc) Pinjam Buku\nd) keluar\n\nPilih: ").strip().lower()
+    first_run = False
 
     ##### Add new book #####
     if select_menu == "a":
