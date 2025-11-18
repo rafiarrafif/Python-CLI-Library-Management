@@ -21,17 +21,23 @@ print("|     Helmi Arrafif Kanahaya (L0225034)    |")
 print("|                                          |")
 print("+------------------------------------------+")
 
+##### Initation book list #####
+'''
+
+'''
 list_buku=[
     Book(judul="Laskar Pelangi", penulis="Andrea Hirata", isbn="9786020336201", stock=5),
     Book(judul="Bumi Manusia", penulis="Pramoedya Ananta Toer", isbn="9786020336010", stock=3),
     Book(judul="Negeri 5 Menara", penulis="Ahmad Fuadi", isbn="9786020336225", stock=4),
     Book(judul="Ayat-Ayat Cinta", penulis="Habiburrahman El Shirazy", isbn="9786020336232", stock=2)
 ]
+##### (END) Initation book list #####
 
 ##### Main Program Loop #####
 while True:
     select_menu = input("Pilih Menu\na) Tambah Buku\nb) Tampilkan Buku\nc) Pinjam Buku\nd) keluar\n\nPilih: ").strip().lower()
 
+    ##### Add new book #####
     if select_menu == "a":
         while True:
             judul = input("Masukan judul buku: ").strip()
@@ -45,7 +51,9 @@ while True:
                 list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=stock))
                 print(f"Buku {judul} telah berhasil ditambahkan")
                 break
+    ##### (END) Add new book #####
 
+    ##### View book list #####
     if select_menu == "b":
         if len(list_buku) == 0:
             print("Belum ada buku.")
@@ -54,10 +62,14 @@ while True:
             data_view = [vars(buku) for buku in list_buku]
             print(tb.tabulate(data_view, headers="keys", tablefmt="fancy_grid"))
             input("Tekan Enter untuk kembali ke menu...")
+    ##### (END) View book list #####
 
+    ##### Borrow book #####
     if select_menu == "c":
         print("pinjem buku")
+    ##### (END) Borrow book #####
 
     if select_menu == "d":
         print("Sampai jumpa :)")
         break
+##### (END) Main Program Loop #####
