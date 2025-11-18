@@ -26,23 +26,25 @@ def add_book():
     stock = 0
     while True:
         judul = input("Masukan judul buku: ").strip()
-        if judul != "":
+        if judul == "":
             print("Judul buku tidak boleh kosong")
         break
     while True:
         penulis = input("Masukan penulis buku: ").strip()
-        if penulis != "":
+        if penulis == "":
             print("Penulis buku tidak boleh kosong")
         break    
     while True:
         isbn = input("Masukan ISBN buku: ").strip()
-        if isbn != "":
+        if isbn == "":
             print("ISBN buku tidak boleh kosong")
         break
     while True:
-        stock = input("Masukan stock (kosongkan jika tidak ada): ")
-        if stock == "" or not stock.isdigit():
-            stock = int(stock) if stock else 0
+        stock_raw = input("Masukan stock (kosongkan jika tidak ada): ")
+        if not stock_raw.isdigit():
+            print("Stock harus berupa angka atau dikosongkan.")
+        else:
+            stock = int(stock_raw) if stock_raw else 0
             break
     print(f"Buku {judul} berhasil ditambahkan.")
     list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=stock))
