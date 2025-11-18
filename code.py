@@ -1,11 +1,13 @@
 import tabulate as tb
 
+##### Define book class #####
 class Book:
     def __init__(self, judul, penulis, isbn, stock = 0):
         self.judul = judul
         self.penulis = penulis
         self.isbn = isbn
         self.stock = stock
+##### (END) Define book class #####
 
 ##### Initation book list and seed dummy data #####
 list_buku=[
@@ -16,6 +18,7 @@ list_buku=[
 ]
 ##### (END) Initation book list and seed dummy data #####
 
+##### Add book function #####
 def add_book():
     judul = ""
     penulis = ""
@@ -43,7 +46,9 @@ def add_book():
             break
     print(f"Buku {judul} berhasil ditambahkan.")
     list_buku.append(Book(judul=judul, penulis=penulis, isbn=isbn, stock=stock))
+##### (END) Add book function #####
 
+##### Borrow book function #####
 def borrow_book(isbn_target):
     book_found = False
     for book in list_buku:
@@ -53,7 +58,9 @@ def borrow_book(isbn_target):
                 return f"Stok buku {book_found} telah habis." 
             book.stock -= 1
     return f"Buku {book_found} berhasil dipinjam." if book_found else f"Buku dengan ISBN {isbn_target} tidak ditemukan."
+##### (END) Borrow book function #####
 
+##### Program Header #####
 print("+------------------------------------------+")
 print("|                                          |")
 print("|             Sistem Pinjam Buku           |")
@@ -61,7 +68,7 @@ print("|                                          |")
 print("|     Helmi Arrafif Kanahaya (L0225034)    |")
 print("|                                          |")
 print("+------------------------------------------+")
-
+##### (END) Program Header #####
 
 ##### Main Program Loop #####
 while True:
@@ -92,7 +99,9 @@ while True:
         input("Tekan Enter untuk kembali ke menu...")
     ##### (END) Borrow book #####
 
+    ##### Kill program #####
     if select_menu == "d":
         print("Sampai jumpa :)")
         break
+    ##### (END) Kill program #####
 ##### (END) Main Program Loop #####
