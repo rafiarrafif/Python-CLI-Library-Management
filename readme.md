@@ -50,8 +50,8 @@ Don't worry, this is easier than assembling IKEA furniture.
 1.  **Grab the code:**
 
 ```bash
-git clone https://github.com/rafiarrafif/library-system-cli.git
-cd library-system-cli
+git clone https://github.com/rafiarrafif/Python-CLI-Library-Management.git
+cd Python-CLI-Library-Management
 ```
 
 2.  **Install the magic ingredients:**
